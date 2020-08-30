@@ -1,33 +1,23 @@
 function getRandomChinese(length){
     return new Promise((resolve, reject) => {
         if (length <= 0) {
-            reject();
+            reject(()=>{
+                console.log('length is too short');
+            });
         } else {
-
-         /*   const date = Date.now() + '';
-            console.log(date);
-            let dateFive = '';
-            dateFive = date.substr(-5);
-            console.log(dateFive);
-            let char = '';*/
             let char = '';
-            for(let i = 0; i <= length -1; i++){
-                const date = Date.now() + '';
+                for(let i = 0; i <= length -1; i++){
+                    const date = Date.now() + '';
 
-                let dateFive = '';
-                dateFive = date.substr(-5);
-                console.log(dateFive);
-
-                char += String.fromCharCode(dateFive);
-                console.log(char);
-                resolve();
-            }
+                    let dateFive = '';
+                    dateFive = date.substr(-5);
+                    char += String.fromCharCode(dateFive + i);
+                }
             setTimeout(() => {
               const element =  document.createElement('div');
-                element.innerText = 'result: ' + char;
+                resolve(element.innerText = 'result: ' + char);
                 document.body.append(element);
               },50 * length)
-
         }
         })
 
